@@ -2,4 +2,4 @@ BUeno despres d'aquest macnifics intents amb Gitkraken i sourcetree, me quedo am
 
 El porxim dia fem alguna cosa.
 
-fi dia 1
+fi dia 1------------------------------------------------------------------------------------------------------
