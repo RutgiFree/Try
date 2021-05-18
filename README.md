@@ -1,1 +1,2 @@
-Funciona? hmm ns
+Funciona? hmm ns 
+huy si que va provem amb algo mes fort...
