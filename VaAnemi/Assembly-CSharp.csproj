@@ -56,9 +56,11 @@
     <Analyzer Include="C:\Program Files (x86)\Microsoft Visual Studio Tools for Unity\16.0\Analyzers\Microsoft.Unity.Analyzers.dll" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\Codi\IA1.cs" />
     <Compile Include="Assets\Codi\ObjPredefinits.cs" />
     <Compile Include="Assets\Codi\Objectiu.cs" />
+    <Compile Include="Assets\Codi\IA1.cs" />
+    <Compile Include="Assets\TimeManager.cs" />
+    <Compile Include="Assets\EventsJoc.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">

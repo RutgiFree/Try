@@ -4,14 +4,18 @@ using UnityEngine;
 
 public class Objectiu : MonoBehaviour
 {
-    private GameObject MyGO = null;
+    private Queue<GameObject> MyGO = new Queue<GameObject>();
 
     private void OnTriggerStay(Collider other)
     {
-        if (MyGO == null) MyGO = other.gameObject;
+        if (!MyGO.Contains(other.gameObject) && other.gameObject.name.Contains("Usable-"))
+        {
+            MyGO.Enqueue(other.gameObject);
+        }
     }
 
-    public GameObject getMyGo(){
+    public Queue<GameObject> getMyGoL()
+    {
         return MyGO;
     }
 }
