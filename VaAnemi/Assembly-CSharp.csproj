@@ -58,9 +58,10 @@
   <ItemGroup>
     <Compile Include="Assets\Codi\ObjPredefinits.cs" />
     <Compile Include="Assets\Codi\Objectiu.cs" />
+    <Compile Include="Assets\Codi\TimeManager.cs" />
+    <Compile Include="Assets\Codi\EventsJoc.cs" />
     <Compile Include="Assets\Codi\IA1.cs" />
-    <Compile Include="Assets\TimeManager.cs" />
-    <Compile Include="Assets\EventsJoc.cs" />
+    <Compile Include="Assets\Codi\Tags.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">

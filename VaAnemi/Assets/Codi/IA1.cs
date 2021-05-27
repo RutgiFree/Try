@@ -6,9 +6,8 @@ using UnityEngine.AI;
 
 public class IA1 : MonoBehaviour
 {
-    readonly static private string LLIT = "Usable-Llit";
-
     public NavMeshAgent NavMeshAgent;
+    public GameObject origin;
     
     private Queue<string> KeysObj = new Queue<string>();
 
@@ -21,12 +20,16 @@ public class IA1 : MonoBehaviour
     void Start(){
         EventsJoc.acutal.onNit += isNit;//ens subcrivim al event, quan s'executi s'executara el nostre metode provat
         EventsJoc.acutal.onDia += isDia;//ens subcrivim al event, quan s'executi s'executara el nostre metode provat
-
+        
+        setMemoryObj(
+            Tags.ORIGEN, 
+            Instantiate<GameObject>(origin, new Vector3(transform.position.x, transform.position.y, transform.position.z), transform.rotation)
+            );
     }
 
     void Update()
     {
-
+        AnemAlObj();
     }
 
     public void setMemoryObj(string _str, GameObject _GO)       
@@ -54,7 +57,8 @@ public class IA1 : MonoBehaviour
             if (MapaObj.TryGetValue(KeysObj.Peek(), out _ActualObj))
             {
                 NavMeshAgent.destination = _ActualObj.transform.position; //fiquem posicio del objectiu
-                finishedObj = false; //hem inicat l'objectiu, clarament no l'hem acavat
+                //finishedObj = false; //hem inicat l'objectiu, clarament no l'hem acavat
+                KeysObj.Dequeue();//aixi no perseguira l'objectiu eternament si el movem
             }
             else Debug.Log("ERROR-KEY NO TROBADA: " + this.name + " en Update \n");
         }
@@ -63,12 +67,12 @@ public class IA1 : MonoBehaviour
     private void isNit() // es de nit
     {
         Debug.Log("BONA NIT");
-        setAcualObj(LLIT); // a mimir
+        setAcualObj(Tags.LLIT); // a mimir
     }
 
     private void isDia() // es de nit
     {
-        //bondia
         Debug.Log("BON DIA");
+        setAcualObj(Tags.ORIGEN);
     }
 }
