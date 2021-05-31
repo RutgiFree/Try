@@ -60,19 +60,21 @@ public class IA1 : MonoBehaviour
                 //finishedObj = false; //hem inicat l'objectiu, clarament no l'hem acavat
                 KeysObj.Dequeue();//aixi no perseguira l'objectiu eternament si el movem
             }
-            else Debug.Log("ERROR-KEY NO TROBADA: " + this.name + " en Update \n");
+            else Debug.Log("ERROR-KEY NO TROBADA:"+ KeysObj.Peek() + " en l'objecte " + this.name + " en Update \n");
         }
     }
 
     private void isNit() // es de nit
     {
-        Debug.Log("BONA NIT");
-        setAcualObj(Tags.LLIT); // a mimir
+        if (MapaObj.ContainsKey(Tags.LLIT1)) //tenim el llit tipus 1 en la llista dememoria? okey doncs es de nit aixi que...
+        {
+            setAcualObj(Tags.LLIT1); // a mimir
+        }
+       
     }
 
     private void isDia() // es de nit
     {
-        Debug.Log("BON DIA");
-        setAcualObj(Tags.ORIGEN);
+        setAcualObj(Tags.ORIGEN); // anem al origen
     }
 }

@@ -4,35 +4,50 @@ using UnityEngine;
 
 public class TimeManager : MonoBehaviour
 {
-
-    private float temps;
     private bool nit, dia;
+
+    private int horaJ;
+    private float minutJ;
 
     // Start is called before the first frame update
     void Start()
     {
-        temps = 0;
         nit = false;
         dia = false;
+
+        //1 hora de joc == 1 minut mon real -> 24horesJ == 24minutsR, 60minutsJ = 60segonsR;
+        horaJ = 0;
+        minutJ = 0;
     }
 
     // Update is called once per frame
     void Update()
     {
-        temps = temps + Time.deltaTime;
-        if(temps > 6) temps = 0;
-        //Debug.Log(temps);
+        minutJ = minutJ + Time.deltaTime;
 
+        if(minutJ > 60)
+        {
+            minutJ = 0;
+            horaJ++;
+        }
 
-        if (temps <= 3 && !dia) //es de dia
+        if (horaJ > 24)
+        {
+            horaJ = 0;
+            Debug.Log("HORA: " + horaJ + ":" + Mathf.FloorToInt(minutJ));
+        }
+
+        if ( (horaJ >= Tags.SOLETHSURT && horaJ < Tags.SOLETHMARXE) && !dia) //es de dia [si ja ha sortit el sol i no ho sabiem que ja ho era]
         {
             dia = true; nit = false;
             esDia();
+            Debug.Log("ES DE DIA: HORA: " + horaJ + ":" + Mathf.FloorToInt(minutJ));
         }
-        else if (temps > 3 && !nit) //es de nit
+        else if ( (horaJ < Tags.SOLETHSURT || horaJ >= Tags.SOLETHMARXE) && !nit) //es de nit [si ja ha marxat el sol i no ho sabiem que ja ho era]
         {
             dia = false; nit = true;
             esNit();
+            Debug.Log("ES DE NIT: HORA: " + horaJ + ":" + Mathf.FloorToInt(minutJ));
         }
     }
 

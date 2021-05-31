@@ -10,6 +10,7 @@ public class Objectiu : MonoBehaviour
     {
         if (!MyGO.Contains(other.gameObject) && other.gameObject.name.Contains("Usable-"))
         {
+            other.gameObject.name = other.gameObject.name.Replace("Usable-", "");
             MyGO.Enqueue(other.gameObject);
         }
     }
