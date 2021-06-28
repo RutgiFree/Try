@@ -2,12 +2,14 @@ using System;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
-
+using Random = UnityEngine.Random;
 
 public class IA1 : MonoBehaviour
 {
     public NavMeshAgent NavMeshAgent;
-    public GameObject origin;
+    public GameObject joPeroNOjo;
+    public int multiplicadorRandom;
+    public int gana, set, son, vida;
     
     private Queue<string> KeysObj = new Queue<string>();
 
@@ -20,16 +22,29 @@ public class IA1 : MonoBehaviour
     void Start(){
         EventsJoc.acutal.onNit += isNit;//ens subcrivim al event, quan s'executi s'executara el nostre metode provat
         EventsJoc.acutal.onDia += isDia;//ens subcrivim al event, quan s'executi s'executara el nostre metode provat
-        
         setMemoryObj(
             Tags.ORIGEN, 
-            Instantiate<GameObject>(origin, new Vector3(transform.position.x, transform.position.y, transform.position.z), transform.rotation)
+            Instantiate<GameObject>(joPeroNOjo, new Vector3(transform.position.x, transform.position.y, transform.position.z), transform.rotation)
             );
     }
 
     void Update()
     {
-        AnemAlObj();
+
+
+        if (KeysObj.Count > 0 && finishedObj)//sempre que tinguem objectius i no estiuem a un desti, anem al seguent destí
+        {
+            finishedObj = AnemAlObj(KeysObj.Dequeue()); //si retorna "false" vol dir que tot ha anat bé i que tenim objectiu al que ens dirigim
+        }
+        else if (!finishedObj) //aixo es per evitar que entri cada cop aixi no agafem tota la condicio llarga i costos de abaix tot el rato
+        {
+            if (new Vector2(NavMeshAgent.destination.x, NavMeshAgent.destination.z).Equals(new Vector2(this.transform.position.x, this.transform.position.z)))
+            {
+                finishedObj = true;
+                Debug.Log("HA ARRIBAT al destí -> " + this.name);
+            }
+        }
+
     }
 
     public void setMemoryObj(string _str, GameObject _GO)       
@@ -42,26 +57,37 @@ public class IA1 : MonoBehaviour
             Debug.Log("ERROR-KEY REPETIDA: " + this.name + " en setMemoryObj \n");
         }
     }
+    public void setDormit(int dormit)
+    {
+        son += dormit;
+        if (son > Tags.MAXSON)
+        {
+            son = Tags.MAXSON;
+        }
+    }
 
     private void setAcualObj(string _Key)
     { 
         KeysObj.Enqueue(_Key); //Afegim objectiu a seguir usan la KEY
     }
-
-    private void AnemAlObj()
+    private int getRand(int multRand, int min, int max)
     {
-        if (KeysObj.Count > 0 && finishedObj)//sempre que tinguem objectius i no estiuem a un desti, anem al seguent destí
-        { 
-            GameObject _ActualObj;
+        Random.InitState(Time.frameCount * multRand);
+        return Random.Range(min, max);
+    }
 
-            if (MapaObj.TryGetValue(KeysObj.Peek(), out _ActualObj))
-            {
-                NavMeshAgent.destination = _ActualObj.transform.position; //fiquem posicio del objectiu
-                //finishedObj = false; //hem inicat l'objectiu, clarament no l'hem acavat
-                KeysObj.Dequeue();//aixi no perseguira l'objectiu eternament si el movem
-            }
-            else Debug.Log("ERROR-KEY NO TROBADA:"+ KeysObj.Peek() + " en l'objecte " + this.name + " en Update \n");
+    private bool AnemAlObj(string _key)
+    {
+        GameObject _ActualObj; Boolean retorn = true;
+
+        if (MapaObj.TryGetValue(_key, out _ActualObj))
+        {
+            NavMeshAgent.destination = _ActualObj.transform.position; //fiquem posicio del objectiu
+            retorn =  false;//hem inicat l'objectiu, clarament no l'hem acavat
         }
+        else Debug.Log("ERROR-KEY NO TROBADA:" + _key + " en l'objecte " + this.name + " en Update \n");
+
+        return retorn;
     }
 
     private void isNit() // es de nit
@@ -70,11 +96,10 @@ public class IA1 : MonoBehaviour
         {
             setAcualObj(Tags.LLIT1); // a mimir
         }
-       
     }
 
     private void isDia() // es de nit
     {
-        setAcualObj(Tags.ORIGEN); // anem al origen
-    }
+        //setAcualObj(Tags.ORIGEN); // anem al origen
+    }   
 }

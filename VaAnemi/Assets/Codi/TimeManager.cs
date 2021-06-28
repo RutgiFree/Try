@@ -16,7 +16,7 @@ public class TimeManager : MonoBehaviour
         dia = false;
 
         //1 hora de joc == 1 minut mon real -> 24horesJ == 24minutsR, 60minutsJ = 60segonsR;
-        horaJ = 0;
+        horaJ = 7;
         minutJ = 0;
     }
 
@@ -25,7 +25,7 @@ public class TimeManager : MonoBehaviour
     {
         minutJ = minutJ + Time.deltaTime;
 
-        if(minutJ > 60)
+        if (minutJ > 60)
         {
             minutJ = 0;
             horaJ++;
@@ -34,20 +34,20 @@ public class TimeManager : MonoBehaviour
         if (horaJ > 24)
         {
             horaJ = 0;
-            Debug.Log("HORA: " + horaJ + ":" + Mathf.FloorToInt(minutJ));
+            Debug.Log("HORA: " + horaJ + ":" + Mathf.FloorToInt(minutJ) + "\tBY: TimeManager");
         }
 
         if ( (horaJ >= Tags.SOLETHSURT && horaJ < Tags.SOLETHMARXE) && !dia) //es de dia [si ja ha sortit el sol i no ho sabiem que ja ho era]
         {
             dia = true; nit = false;
             esDia();
-            Debug.Log("ES DE DIA: HORA: " + horaJ + ":" + Mathf.FloorToInt(minutJ));
+            Debug.Log("ES DE DIA: HORA: " + horaJ + ":" + Mathf.FloorToInt(minutJ) + "\tBY: TimeManager");
         }
         else if ( (horaJ < Tags.SOLETHSURT || horaJ >= Tags.SOLETHMARXE) && !nit) //es de nit [si ja ha marxat el sol i no ho sabiem que ja ho era]
         {
             dia = false; nit = true;
             esNit();
-            Debug.Log("ES DE NIT: HORA: " + horaJ + ":" + Mathf.FloorToInt(minutJ));
+            Debug.Log("ES DE NIT: HORA: " + horaJ + ":" + Mathf.FloorToInt(minutJ) + "\tBY: TimeManager");
         }
     }
 

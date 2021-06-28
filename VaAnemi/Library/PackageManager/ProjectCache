@@ -1,20 +1,20 @@
 m_ProjectFiles:
   m_ManifestFileStatus:
-    m_FilePath: D:/Projectes/UNITY-ENGINE/TRY/VaAnemi/Packages/manifest.json
+    m_FilePath: E:/MemoryFolder/Creacio_Jocs/Unity_Projects/Try/VaAnemi/Packages/manifest.json
     m_PathExists: 1
     m_ContentTrackingEnabled: 1
     m_ModificationDate:
       serializedVersion: 2
-      ticks: 637575251209684253
-    m_Hash: 3790309203
+      ticks: 637570117017813885
+    m_Hash: 1710627684
   m_LockFileStatus:
-    m_FilePath: D:/Projectes/UNITY-ENGINE/TRY/VaAnemi/Packages/packages-lock.json
+    m_FilePath: E:/MemoryFolder/Creacio_Jocs/Unity_Projects/Try/VaAnemi/Packages/packages-lock.json
     m_PathExists: 1
     m_ContentTrackingEnabled: 1
     m_ModificationDate:
       serializedVersion: 2
-      ticks: 637575251209694194
-    m_Hash: 1365918465
+      ticks: 637570117018465694
+    m_Hash: 3230899647
 m_EmbeddedPackageManifests:
   m_ManifestsStatus: {}
 m_PackageAssets:
@@ -25,7 +25,7 @@ m_PackageAssets:
       isDirectDependency: 1
       version: 2.6.4
       source: 1
-      resolvedPath: D:\Projectes\UNITY-ENGINE\TRY\VaAnemi\Library\PackageCache\com.unity.cinemachine@2.6.4
+      resolvedPath: E:\MemoryFolder\Creacio_Jocs\Unity_Projects\Try\VaAnemi\Library\PackageCache\com.unity.cinemachine@2.6.4
       assetPath: Packages/com.unity.cinemachine
       name: com.unity.cinemachine
       displayName: Cinemachine
@@ -78,6 +78,11 @@ m_PackageAssets:
         - 2.6.3
         - 2.6.4
         - 2.7.1
+        - 2.7.2
+        - 2.7.3
+        - 2.8.0-exp.1
+        - 2.8.0-exp.2
+        - 2.8.0-pre.1
         compatible:
         - 2.5.0
         - 2.6.0-preview.2
@@ -93,6 +98,11 @@ m_PackageAssets:
         - 2.6.3
         - 2.6.4
         - 2.7.1
+        - 2.7.2
+        - 2.7.3
+        - 2.8.0-exp.1
+        - 2.8.0-exp.2
+        - 2.8.0-pre.1
         verified: 2.6.4
       dependencies: []
       resolvedDependencies: []
@@ -131,12 +141,12 @@ m_PackageAssets:
       entitlements:
         isAllowed: 1
       isAssetStorePackage: 0
-      datePublishedTicks: 0
+      datePublishedTicks: 637523747250000000
       documentationUrl: 
       hasRepository: 1
       repository:
         type: git
-        url: https://github.com/Unity-Technologies/com.unity.cinemachine.git
+        url: git+https://github.com/Unity-Technologies/com.unity.cinemachine.git
         revision: e272fa7acbab235a840c4e766b8e6099fa5cd76c
         path: 
     - packageId: com.unity.collab-proxy@1.3.9
@@ -144,7 +154,7 @@ m_PackageAssets:
       isDirectDependency: 1
       version: 1.3.9
       source: 1
-      resolvedPath: D:\Projectes\UNITY-ENGINE\TRY\VaAnemi\Library\PackageCache\com.unity.collab-proxy@1.3.9
+      resolvedPath: E:\MemoryFolder\Creacio_Jocs\Unity_Projects\Try\VaAnemi\Library\PackageCache\com.unity.collab-proxy@1.3.9
       assetPath: Packages/com.unity.collab-proxy
       name: com.unity.collab-proxy
       displayName: Unity Collaborate
@@ -178,6 +188,7 @@ m_PackageAssets:
         - 1.3.7
         - 1.3.8
         - 1.3.9
+        - 1.5.7
         - 2.0.0-preview.6
         - 2.0.0-preview.8
         - 2.0.0-preview.15
@@ -190,6 +201,7 @@ m_PackageAssets:
         - 2.1.0-preview.6
         compatible:
         - 1.3.9
+        - 1.5.7
         - 2.0.0-preview.6
         - 2.0.0-preview.8
         - 2.0.0-preview.15
@@ -239,7 +251,7 @@ m_PackageAssets:
       isDirectDependency: 1
       version: 2.0.7
       source: 1
-      resolvedPath: D:\Projectes\UNITY-ENGINE\TRY\VaAnemi\Library\PackageCache\com.unity.ide.rider@2.0.7
+      resolvedPath: E:\MemoryFolder\Creacio_Jocs\Unity_Projects\Try\VaAnemi\Library\PackageCache\com.unity.ide.rider@2.0.7
       assetPath: Packages/com.unity.ide.rider
       name: com.unity.ide.rider
       displayName: JetBrains Rider Editor
@@ -276,6 +288,10 @@ m_PackageAssets:
         - 2.0.7
         - 3.0.1
         - 3.0.2
+        - 3.0.3
+        - 3.0.4
+        - 3.0.5
+        - 3.0.6
         compatible:
         - 1.0.2
         - 1.0.6
@@ -297,6 +313,10 @@ m_PackageAssets:
         - 2.0.7
         - 3.0.1
         - 3.0.2
+        - 3.0.3
+        - 3.0.4
+        - 3.0.5
+        - 3.0.6
         verified: 2.0.7
       dependencies:
       - name: com.unity.test-framework
@@ -336,7 +356,7 @@ m_PackageAssets:
       isDirectDependency: 1
       version: 2.0.8
       source: 1
-      resolvedPath: D:\Projectes\UNITY-ENGINE\TRY\VaAnemi\Library\PackageCache\com.unity.ide.visualstudio@2.0.8
+      resolvedPath: E:\MemoryFolder\Creacio_Jocs\Unity_Projects\Try\VaAnemi\Library\PackageCache\com.unity.ide.visualstudio@2.0.8
       assetPath: Packages/com.unity.ide.visualstudio
       name: com.unity.ide.visualstudio
       displayName: Visual Studio Editor
@@ -419,7 +439,7 @@ m_PackageAssets:
       isDirectDependency: 1
       version: 1.2.3
       source: 1
-      resolvedPath: D:\Projectes\UNITY-ENGINE\TRY\VaAnemi\Library\PackageCache\com.unity.ide.vscode@1.2.3
+      resolvedPath: E:\MemoryFolder\Creacio_Jocs\Unity_Projects\Try\VaAnemi\Library\PackageCache\com.unity.ide.vscode@1.2.3
       assetPath: Packages/com.unity.ide.vscode
       name: com.unity.ide.vscode
       displayName: Visual Studio Code Editor
@@ -488,7 +508,7 @@ m_PackageAssets:
       isDirectDependency: 1
       version: 4.5.0
       source: 1
-      resolvedPath: D:\Projectes\UNITY-ENGINE\TRY\VaAnemi\Library\PackageCache\com.unity.probuilder@4.5.0
+      resolvedPath: E:\MemoryFolder\Creacio_Jocs\Unity_Projects\Try\VaAnemi\Library\PackageCache\com.unity.probuilder@4.5.0
       assetPath: Packages/com.unity.probuilder
       name: com.unity.probuilder
       displayName: ProBuilder
@@ -541,6 +561,10 @@ m_PackageAssets:
         - 4.4.0-preview.1
         - 4.4.0
         - 4.5.0
+        - 5.0.0-pre.7
+        - 5.0.0-pre.10
+        - 5.0.1
+        - 5.0.3
         compatible:
         - 4.0.2
         - 4.0.3
@@ -565,6 +589,10 @@ m_PackageAssets:
         - 4.4.0-preview.1
         - 4.4.0
         - 4.5.0
+        - 5.0.0-pre.7
+        - 5.0.0-pre.10
+        - 5.0.1
+        - 5.0.3
         verified: 4.5.0
       dependencies:
       - name: com.unity.settings-manager
@@ -605,20 +633,20 @@ m_PackageAssets:
       entitlements:
         isAllowed: 1
       isAssetStorePackage: 0
-      datePublishedTicks: 0
+      datePublishedTicks: 637468491200000000
       documentationUrl: 
       hasRepository: 1
       repository:
         type: git
-        url: https://github.com/Unity-Technologies/com.unity.probuilder.git
-        revision: 5a2d97fae819560416df851dc26bf13923562911
+        url: git+https://github.com/Unity-Technologies/com.unity.probuilder.git
+        revision: c0048d825082c4ae352d19ea8bb13d5f63cbcde7
         path: 
     - packageId: com.unity.test-framework@1.1.24
       testable: 0
       isDirectDependency: 1
       version: 1.1.24
       source: 1
-      resolvedPath: D:\Projectes\UNITY-ENGINE\TRY\VaAnemi\Library\PackageCache\com.unity.test-framework@1.1.24
+      resolvedPath: E:\MemoryFolder\Creacio_Jocs\Unity_Projects\Try\VaAnemi\Library\PackageCache\com.unity.test-framework@1.1.24
       assetPath: Packages/com.unity.test-framework
       name: com.unity.test-framework
       displayName: Test Framework
@@ -657,6 +685,9 @@ m_PackageAssets:
         - 1.1.14
         - 1.1.16
         - 1.1.18
+        - 1.1.19
+        - 1.1.20
+        - 1.1.22
         - 1.1.24
         compatible:
         - 1.1.24
@@ -690,12 +721,12 @@ m_PackageAssets:
       entitlements:
         isAllowed: 1
       isAssetStorePackage: 0
-      datePublishedTicks: 0
+      datePublishedTicks: 637505702940000000
       documentationUrl: 
       hasRepository: 1
       repository:
         type: git
-        url: https://github.com/Unity-Technologies/com.unity.test-framework.git
+        url: git+https://github.com/Unity-Technologies/com.unity.test-framework.git
         revision: e6fe8892689398c0d9aba4587e0ba69edc3d82b8
         path: 
     - packageId: com.unity.textmeshpro@3.0.6
@@ -703,7 +734,7 @@ m_PackageAssets:
       isDirectDependency: 1
       version: 3.0.6
       source: 1
-      resolvedPath: D:\Projectes\UNITY-ENGINE\TRY\VaAnemi\Library\PackageCache\com.unity.textmeshpro@3.0.6
+      resolvedPath: E:\MemoryFolder\Creacio_Jocs\Unity_Projects\Try\VaAnemi\Library\PackageCache\com.unity.textmeshpro@3.0.6
       assetPath: Packages/com.unity.textmeshpro
       name: com.unity.textmeshpro
       displayName: TextMeshPro
@@ -862,7 +893,7 @@ m_PackageAssets:
       isDirectDependency: 1
       version: 1.4.8
       source: 1
-      resolvedPath: D:\Projectes\UNITY-ENGINE\TRY\VaAnemi\Library\PackageCache\com.unity.timeline@1.4.8
+      resolvedPath: E:\MemoryFolder\Creacio_Jocs\Unity_Projects\Try\VaAnemi\Library\PackageCache\com.unity.timeline@1.4.8
       assetPath: Packages/com.unity.timeline
       name: com.unity.timeline
       displayName: Timeline
@@ -2814,7 +2845,7 @@ m_PackageAssets:
       isDirectDependency: 0
       version: 1.0.6
       source: 1
-      resolvedPath: D:\Projectes\UNITY-ENGINE\TRY\VaAnemi\Library\PackageCache\com.unity.ext.nunit@1.0.6
+      resolvedPath: E:\MemoryFolder\Creacio_Jocs\Unity_Projects\Try\VaAnemi\Library\PackageCache\com.unity.ext.nunit@1.0.6
       assetPath: Packages/com.unity.ext.nunit
       name: com.unity.ext.nunit
       displayName: Custom NUnit
@@ -2834,12 +2865,14 @@ m_PackageAssets:
         - 0.1.6-preview
         - 0.1.9-preview
         - 1.0.0
+        - 1.0.5
         - 1.0.6
         compatible:
         - 0.1.5-preview
         - 0.1.6-preview
         - 0.1.9-preview
         - 1.0.0
+        - 1.0.5
         - 1.0.6
         verified: 1.0.6
       dependencies: []
@@ -2860,7 +2893,7 @@ m_PackageAssets:
       entitlements:
         isAllowed: 1
       isAssetStorePackage: 0
-      datePublishedTicks: 0
+      datePublishedTicks: 637429759280000000
       documentationUrl: 
       hasRepository: 1
       repository:
@@ -2873,7 +2906,7 @@ m_PackageAssets:
       isDirectDependency: 0
       version: 1.0.3
       source: 1
-      resolvedPath: D:\Projectes\UNITY-ENGINE\TRY\VaAnemi\Library\PackageCache\com.unity.settings-manager@1.0.3
+      resolvedPath: E:\MemoryFolder\Creacio_Jocs\Unity_Projects\Try\VaAnemi\Library\PackageCache\com.unity.settings-manager@1.0.3
       assetPath: Packages/com.unity.settings-manager
       name: com.unity.settings-manager
       displayName: Settings Manager
@@ -2928,5 +2961,5 @@ m_PackageAssets:
         path: 
   m_LocalPackages:
     m_LocalFileStatus: []
-m_ProjectPath: D:/Projectes/UNITY-ENGINE/TRY/VaAnemi/Packages
+m_ProjectPath: E:/MemoryFolder/Creacio_Jocs/Unity_Projects/Try/VaAnemi/Packages
 m_EditorVersion: 2020.3.8f1 (507919d4fff5)
