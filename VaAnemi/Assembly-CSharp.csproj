@@ -61,13 +61,19 @@
     <Compile Include="Assets\Codi\MovePlayer.cs" />
     <Compile Include="Assets\Codi\Tags.cs" />
     <Compile Include="Assets\Codi\Objectiu.cs" />
+    <Compile Include="Assets\InteractionAccion.cs" />
+    <Compile Include="Assets\InteractionObjAction.cs" />
     <Compile Include="Assets\Codi\LlitPetit1.cs" />
+    <Compile Include="Assets\InteractableObj.cs" />
     <Compile Include="Assets\Codi\TimeManager.cs" />
     <Compile Include="Assets\Codi\EventsJoc.cs" />
     <Compile Include="Assets\Codi\IA1.cs" />
-    <Compile Include="Assets\InteractionAccion.cs" />
-    <Compile Include="Assets\InteractableObj.cs" />
-    <Compile Include="Assets\InteractionObjAction.cs" />
+    <Compile Include="Assets\QuickOutline\Scripts\Outline.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Assets\QuickOutline\Resources\Shaders\OutlineMask.shader" />
+    <None Include="Assets\QuickOutline\Readme.txt" />
+    <None Include="Assets\QuickOutline\Resources\Shaders\OutlineFill.shader" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">

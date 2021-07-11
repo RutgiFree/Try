@@ -7,11 +7,13 @@ public class InteractionAccion : MonoBehaviour
 
     List<GameObject> interact_llista;
     GameObject interact_Actiu;
+    int indexActual;
 
     // Start is called before the first frame update
     void Start()
     {
         interact_llista = new List<GameObject>();
+        indexActual = 0;
     }
 
     // Update is called once per frame
@@ -19,20 +21,27 @@ public class InteractionAccion : MonoBehaviour
     {
         if(interact_Actiu != null)
         {
-            
             if (!interact_Actiu.GetComponent<InteractableObj>().isActive)
             {
-                interact_llista.Add(interact_Actiu); //tornem a guardar ja que potser volem tornar a interactuar amb ell
-                interact_Actiu = interact_llista[0]; //agafem un element de la llista  (el primer, ja que volem actuam com una FIFO)
-                interact_llista.Remove(interact_Actiu); //i l'eliminem de la llista
+                indexActual = getNextActiveIndex(indexActual); //actualitzem l'index de la llista
+                interact_Actiu = interact_llista[indexActual]; //agafem un element de la llista  
                 interact_Actiu.GetComponent<InteractableObj>().setActive();
             }
         }
         else if(interact_llista.Count > 0)
         {
-            interact_Actiu = interact_llista[0]; //agafem un element de la llista  (el primer, ja que volem actuam com una FIFO)
-            interact_llista.Remove(interact_Actiu); //i l'eliminem de la llista
+            indexActual = getNextActiveIndex(indexActual); //actualitzem l'index de la llista
+            interact_Actiu = interact_llista[ indexActual ]; //agafem un element de la llista 
         }
+        Debug.Log(interact_llista.Count);
+    }
+
+    private int getNextActiveIndex(int _actualIndex)
+    {
+        if ( _actualIndex >= (interact_llista.Count - 1) )
+            return 0;
+        
+        return _actualIndex + 1;
     }
 
     private void OnTriggerEnter(Collider other)
@@ -44,11 +53,11 @@ public class InteractionAccion : MonoBehaviour
                 interact_Actiu = other.gameObject;
                 interact_Actiu.GetComponent<InteractableObj>().setActive();
             }
-            else if(!interact_llista.Contains(other.gameObject)) //penso que avans es colaven duplicas aixi que per sid e cas
+            
+            if(!interact_llista.Contains(other.gameObject)) //penso que avans es colaven duplicas aixi que per sid e cas
             {
                interact_llista.Add(other.gameObject); //safegeix al final de la llista
             }
-                
         }
     }
 
@@ -58,8 +67,8 @@ public class InteractionAccion : MonoBehaviour
         {
             if (interact_Actiu == other.gameObject)
                 interact_Actiu = null;
-            else
-                interact_llista.Remove(other.gameObject);
+
+            interact_llista.Remove(other.gameObject);
         }
     }
 }

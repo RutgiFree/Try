@@ -45,8 +45,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isInRange: 0
+  isActive: 0
   keyInteract: 0
   interationAction:
+    m_PersistentCalls:
+      m_Calls: []
+  NoLookingAction:
+    m_PersistentCalls:
+      m_Calls: []
+  SiLookingAction:
     m_PersistentCalls:
       m_Calls: []
 --- !u!135 &5428983915226754938

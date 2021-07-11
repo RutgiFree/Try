@@ -4,19 +4,22 @@ using UnityEngine;
 
 public class InteractionObjAction : MonoBehaviour
 {
-    public Material NO_active, YES_active, actualM, LOOKING_active;
+    public Shader lookingShader;
     bool isActive, isAccion;
 
-    Renderer myRenderer;
+    Outline outlineShader;
 
     // Start is called before the first frame update
     void Start()
     {
-        myRenderer = GetComponent<Renderer>();
-        myRenderer.material = NO_active;
-        actualM = NO_active;
         isActive = false;
         isAccion = false;
+
+        //configurem la "bora" de l'objecte per quan el seleccionem
+        outlineShader = gameObject.AddComponent<Outline>();
+        outlineShader.OutlineColor = Color.white;
+        outlineShader.OutlineMode = Outline.Mode.OutlineVisible;
+        outlineShader.OutlineWidth = 0f; //de mentres l'amaguem
     }
 
     // Update is called once per frame
@@ -30,24 +33,23 @@ public class InteractionObjAction : MonoBehaviour
         isAccion = !isAccion;
         if (isAccion)
         {
-            myRenderer.material = YES_active;
+            //ACTIVAT
         }
         else
         {
-            myRenderer.material = NO_active;
+            //DESACTIVAT
         }
-        actualM = myRenderer.material;
     }
 
     public void SiSocActiu()
     {
         isActive = true;
-        myRenderer.material = LOOKING_active;
+        outlineShader.OutlineWidth = 5f; //el fem visible
     }
 
     public void NoSocActiu()
     {
         isActive = false;
-        myRenderer.material = actualM;        
+        outlineShader.OutlineWidth = 0f;//de mentres l'amaguem
     }
 }

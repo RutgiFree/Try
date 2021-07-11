@@ -6,7 +6,7 @@ using UnityEngine.Events;
 public class InteractableObj : MonoBehaviour
 {
     public bool isInRange, isActive;
-    public KeyCode keyInteract;
+    public KeyCode keyInteract, keyNext;
     public UnityEvent interationAction, NoLookingAction, SiLookingAction;
 
     // Start is called before the first frame update
@@ -24,6 +24,12 @@ public class InteractableObj : MonoBehaviour
             if (Input.GetKeyDown(keyInteract)) //si la tecla que estem mantenint es la tecla interraci definida, entrem
             {
                 interationAction.Invoke();  //invoquem la interacio definida
+                isActive = false;
+                NoLookingAction.Invoke();
+            }
+
+            if (Input.GetKeyDown(keyNext)) //si la tecla que estem mantenint es la tecla interraci definida, entrem
+            {
                 isActive = false;
                 NoLookingAction.Invoke();
             }
