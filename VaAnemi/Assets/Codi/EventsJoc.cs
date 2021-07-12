@@ -15,7 +15,7 @@ public class EventsJoc : MonoBehaviour
     public event Action onNit; //on es guarden les subscripcions al eveny
     public void isNit()
     {
-        Debug.Log("isNIT" + "\tBY: EventsJoc");
+        //Debug.Log("isNIT" + "\tBY: EventsJoc");
         if (onNit != null)
             onNit();//execució del event
     }
@@ -23,7 +23,7 @@ public class EventsJoc : MonoBehaviour
     public event Action onDia; //on es guarden les subscripcions al eveny
     public void isDia()
     {
-        Debug.Log("isDIA" + "\tBY: EventsJoc");
+        //Debug.Log("isDIA" + "\tBY: EventsJoc");
         if (onDia != null)
             onDia();//execució del event
     }

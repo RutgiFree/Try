@@ -1810,6 +1810,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   lookingShader: {fileID: 4800000, guid: 73af4ac4cc3b2ef488487c5a69805734, type: 3}
+--- !u!4 &1564451972 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 7523721706363391352, guid: 09cb84f23242b434d8f2c8383b266f75, type: 3}
+  m_PrefabInstance: {fileID: 8889642448935679055}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1758998024
 GameObject:
   m_ObjectHideFlags: 0
@@ -2678,6 +2683,14 @@ PrefabInstance:
       propertyPath: cam
       value: 
       objectReference: {fileID: 1758998027}
+    - target: {fileID: 1875086794866882666, guid: 09cb84f23242b434d8f2c8383b266f75, type: 3}
+      propertyPath: groundCheck
+      value: 
+      objectReference: {fileID: 1564451972}
+    - target: {fileID: 1875086794866882666, guid: 09cb84f23242b434d8f2c8383b266f75, type: 3}
+      propertyPath: groundMask.m_Bits
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 2723447616414505744, guid: 09cb84f23242b434d8f2c8383b266f75, type: 3}
       propertyPath: m_Name
       value: Player
@@ -2768,7 +2781,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5385446294266313310, guid: 09cb84f23242b434d8f2c8383b266f75, type: 3}
       propertyPath: m_Enabled
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 09cb84f23242b434d8f2c8383b266f75, type: 3}
