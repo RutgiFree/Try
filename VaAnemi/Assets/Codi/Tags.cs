@@ -9,7 +9,8 @@ public static class Tags
     readonly static public int MAXSON = 8, MAXGANA = 10, MAXSET = 10;
     readonly static public float GRAVTERRA = -9.81f*2;
     readonly static public string PLAYER = "Player", INTERACT = "Interactuable";
-
+    readonly static public float VELCAMINARHUMA = 6f, VELCORREHUMA = 8f;
+    readonly static public int ISCAMINANT_ANIMATOR = Animator.StringToHash("Caminar"), ISCORRENT_ANIMATOR = Animator.StringToHash("Corre");
 
 
 }
