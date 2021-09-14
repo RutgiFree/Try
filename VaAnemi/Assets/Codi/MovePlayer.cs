@@ -13,9 +13,9 @@ public class MovePlayer : MonoBehaviour
     public float speed, acceleracio, desacceleracio;
     public float girSmoothTemps;
     
-    float radiGroundDist = 0.5f;
+    public float radiGroundDist;
     float girSmoothVelocitat;
-    Vector3 velocityY;
+    public Vector3 velocityY;
 
     private void Start()
     {
@@ -24,12 +24,15 @@ public class MovePlayer : MonoBehaviour
         speed = 0.0f;
         acceleracio = 10f;
         desacceleracio = 20f;
+        radiGroundDist = 0.5f;
     }
 
     // Update is called once per frame
     void Update()
     {
         bool isGrounded = Physics.CheckSphere(groundCheck.position, radiGroundDist, groundMask);
+        animator.SetBool(Tags.ISGROUNDED, isGrounded);//afeim la info un cop la tenim        
+
         bool playerSayRUN = Input.GetKey("left shift"); // key que indica que vol corre
        
         float horitzonalInput = Input.GetAxisRaw("Horizontal"); // si presiona "a" i "d" a la hora es pare, lo seu seria que agafes el ultim "input"
@@ -37,44 +40,51 @@ public class MovePlayer : MonoBehaviour
         Vector3 direccio = new Vector3(horitzonalInput, 0f, verticalInput).normalized; //aixi quan vagi en diagonal no s'accelera
 
 
-        if (direccio.magnitude >= 0.1f) // ens indica que vol moures
+        speed = setAutoSpeed(speed, direccio.magnitude, playerSayRUN, acceleracio, desacceleracio);
+        animator.SetFloat(Tags.VELOCITAT_ANIM, speed);//afeim la info un cop la tenim
+
+        girSmoothVelocitat = movimentPayer(controlador, cam, speed, girSmoothTemps, girSmoothVelocitat, direccio);
+        velocityY = gravetatPlayer(controlador, velocityY, Tags.GRAVTERRA, controlador.height, isGrounded);
+        animator.SetFloat(Tags.VEL_Y, velocityY.y); //afeim la info un cop la tenim        
+        
+    }
+
+    float setAutoSpeed(float _speed, float _DiMagnitude, bool PlSayRun, float _Acc, float _DesAcc)        
+    { //aqui donem la velocitat depenen de si correm o caminem o idel (sent un humà)
+        if (_DiMagnitude >= 0.1f) // ens indica que vol moures
         {
-            if (playerSayRUN && speed != Tags.VELCORRE_HUMA) //ens indica que vol corre
+            if (PlSayRun && _speed != Tags.VELCORRE_HUMA) //ens indica que vol corre
             {
-                if (speed < Tags.VELCORRE_HUMA)//accelerem per corre
+                if (_speed < Tags.VELCORRE_HUMA)//accelerem per corre
                 {
-                    speed += (Time.deltaTime * acceleracio);
-                    if (speed > Tags.VELCORRE_HUMA) speed = Tags.VELCORRE_HUMA; //no ens pasem de la velocitat objectiu (per si de cas)
+                    _speed += (Time.deltaTime * _Acc);
+                    if (_speed > Tags.VELCORRE_HUMA) _speed = Tags.VELCORRE_HUMA; //no ens pasem de la velocitat objectiu (per si de cas)
                 }
             }
-            else if(speed != Tags.VELCAMINAR_HUMA)//ens indica que vol caminar
+            else if ( !PlSayRun && _speed != Tags.VELCAMINAR_HUMA)//ens indica que vol caminar
             {
-                if (speed < Tags.VELCAMINAR_HUMA)//accelerem per caminar
+                if (_speed < Tags.VELCAMINAR_HUMA)//accelerem per caminar
                 {
-                    speed += (Time.deltaTime * acceleracio);
-                    if (speed > Tags.VELCAMINAR_HUMA) speed = Tags.VELCAMINAR_HUMA; //no ens pasem de la velocitat objectiu (per si de cas)
+                    _speed += (Time.deltaTime * _Acc);
+                    if (_speed > Tags.VELCAMINAR_HUMA) _speed = Tags.VELCAMINAR_HUMA; //no ens pasem de la velocitat objectiu (per si de cas)
                 }
-                else if (speed > Tags.VELCAMINAR_HUMA) //frenem per caminar
+                else if (_speed > Tags.VELCAMINAR_HUMA) //frenem per caminar
                 {
-                    speed -= (Time.deltaTime * desacceleracio);
-                    if (speed < Tags.VELCAMINAR_HUMA) speed = Tags.VELCAMINAR_HUMA; //no ens pasem de la velocitat objectiu (per si de cas)
+                    _speed -= (Time.deltaTime * _DesAcc);
+                    if (_speed < Tags.VELCAMINAR_HUMA) _speed = Tags.VELCAMINAR_HUMA; //no ens pasem de la velocitat objectiu (per si de cas)
                 }
             }
         }
         else //ens indica que no vol moures
         {
-            if (speed > 0.0f) //frenem per pararnos
+            if (_speed > 0.0f) //frenem per pararnos
             {
-                speed -= (Time.deltaTime * desacceleracio);
+                _speed -= (Time.deltaTime * _DesAcc);
             }
 
-            if (speed < 0.0f) speed = 0.0f; //no ens pasem de la velocitat objectiu (per si de cas)
+            if (_speed < 0.0f) _speed = 0.0f; //no ens pasem de la velocitat objectiu (per si de cas)
         }
-
-        girSmoothVelocitat = movimentPayer(controlador, cam, speed, girSmoothTemps, girSmoothVelocitat, direccio);
-        velocityY = gravetatPlayer(velocityY, Tags.GRAVTERRA, controlador.height, isGrounded);
-
-        animator.SetFloat(Tags.VELOCITAT_ANIM, speed);//animen un cop fet tot moviment
+        return _speed;
     }
 
     float movimentPayer(CharacterController c, Camera _camRef, float _speed, float _girSmoothT, float _girSmoothV, Vector3 _dir)
@@ -89,26 +99,28 @@ public class MovePlayer : MonoBehaviour
             //es moltiplica aixi podem tenri el formar que necestiem. 
             Vector3 movDir = Quaternion.Euler(0f, angleDesti, 0f) * Vector3.forward;
             c.Move(movDir.normalized * _speed * Time.deltaTime);
-
         }
-       
         return _girSmoothV;
     }
 
-    Vector3 gravetatPlayer(Vector3 _velocityY, float _gravity, float _jumpHeight, bool _isGrounded)
+    Vector3 gravetatPlayer(CharacterController c, Vector3 _velocityY, float _gravity, float _jumpHeight, bool _isGrounded)
     {
         //amb aixo savem si esta tocan amb els elements de la "groundMask" espesificats
 
         if (_isGrounded && _velocityY.y < 0)
+        {//recetegem
             _velocityY.y = -2f; // no fiquem 0 ja que estem afegin un "marge d'error" i aixi l'evitem
+        }
 
         if (Input.GetButtonDown("Jump") && _isGrounded)
+        {
             _velocityY.y = Mathf.Sqrt(_jumpHeight * -2f * _gravity); // es una formula matematica/fisica per aplicar el salt
-
-        Debug.Log("condicio de reset? " + (_isGrounded && _velocityY.y < 0));
+            //animator.Play("JumpingUp");
+        }
+            
 
         _velocityY.y += _gravity * Time.deltaTime; //es aixi per formula matematica/fisica
-        controlador.Move(_velocityY * Time.deltaTime); //es aixi per formula matematica/fisica
+        c.Move(_velocityY * Time.deltaTime); //es aixi per formula matematica/fisica
         return _velocityY;
     }
 }

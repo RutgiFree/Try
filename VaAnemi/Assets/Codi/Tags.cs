@@ -10,8 +10,7 @@ public static class Tags
     readonly static public float GRAVTERRA = -9.81f*2;
     readonly static public string PLAYER = "Player", INTERACT = "Interactuable";
     readonly static public float VELCAMINAR_HUMA = 6.5f, VELCORRE_HUMA = 8f;
-    readonly static public int VELOCITAT_ANIM = Animator.StringToHash("Velocitat");
-    
+    readonly static public int VELOCITAT_ANIM = Animator.StringToHash("Velocitat"), ISGROUNDED = Animator.StringToHash("IsGrounded"), VEL_Y = Animator.StringToHash("Velocity_Y");
 
 
 }
